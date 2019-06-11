@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ListaUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListaUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaUsuariosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IniciarSesion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="correo_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena_usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IniciarSesionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IniciarSesionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiaEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiaEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CambiaEstadoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rut_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasena_usuario" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="estado_usuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo_usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreaUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaUsuario_Tipo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_tipo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertaUsuario_TipoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertaUsuario_TipoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre_usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellido_usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rut_usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="contrasena_usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="estado_usuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo_usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagen_usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="tipo_usuario" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserWithoutTipo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserWithoutTipoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserWithoutTipoResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListaUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ListaUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IniciarSesionSoapIn">
+    <wsdl:part name="parameters" element="tns:IniciarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IniciarSesionSoapOut">
+    <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:CambiaEstado" />
+  </wsdl:message>
+  <wsdl:message name="CambiaEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:CambiaEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreaUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:CreaUsuario" />
+  </wsdl:message>
+  <wsdl:message name="CreaUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:CreaUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertaUsuario_TipoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertaUsuario_Tipo" />
+  </wsdl:message>
+  <wsdl:message name="InsertaUsuario_TipoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertaUsuario_TipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserWithoutTipoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserWithoutTipo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserWithoutTipoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserWithoutTipoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="crudUsuarioSoap">
+    <wsdl:operation name="ListaUsuarios">
+      <wsdl:input message="tns:ListaUsuariosSoapIn" />
+      <wsdl:output message="tns:ListaUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <wsdl:input message="tns:IniciarSesionSoapIn" />
+      <wsdl:output message="tns:IniciarSesionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstado">
+      <wsdl:input message="tns:CambiaEstadoSoapIn" />
+      <wsdl:output message="tns:CambiaEstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaUsuario">
+      <wsdl:input message="tns:CreaUsuarioSoapIn" />
+      <wsdl:output message="tns:CreaUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertaUsuario_Tipo">
+      <wsdl:input message="tns:InsertaUsuario_TipoSoapIn" />
+      <wsdl:output message="tns:InsertaUsuario_TipoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserSoapIn" />
+      <wsdl:output message="tns:GetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserWithoutTipo">
+      <wsdl:input message="tns:GetUserWithoutTipoSoapIn" />
+      <wsdl:output message="tns:GetUserWithoutTipoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="crudUsuarioSoap" type="tns:crudUsuarioSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListaUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ListaUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <soap:operation soapAction="http://tempuri.org/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstado">
+      <soap:operation soapAction="http://tempuri.org/CambiaEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaUsuario">
+      <soap:operation soapAction="http://tempuri.org/CreaUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaUsuario_Tipo">
+      <soap:operation soapAction="http://tempuri.org/InsertaUsuario_Tipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserWithoutTipo">
+      <soap:operation soapAction="http://tempuri.org/GetUserWithoutTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="crudUsuarioSoap12" type="tns:crudUsuarioSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListaUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/ListaUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IniciarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstado">
+      <soap12:operation soapAction="http://tempuri.org/CambiaEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaUsuario">
+      <soap12:operation soapAction="http://tempuri.org/CreaUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertaUsuario_Tipo">
+      <soap12:operation soapAction="http://tempuri.org/InsertaUsuario_Tipo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserWithoutTipo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserWithoutTipo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="crudUsuario">
+    <wsdl:port name="crudUsuarioSoap" binding="tns:crudUsuarioSoap">
+      <soap:address location="http://localhost:53445/crudUsuario.asmx" />
+    </wsdl:port>
+    <wsdl:port name="crudUsuarioSoap12" binding="tns:crudUsuarioSoap12">
+      <soap12:address location="http://localhost:53445/crudUsuario.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
