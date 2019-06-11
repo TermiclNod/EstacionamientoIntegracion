@@ -37,7 +37,7 @@ namespace WebServices
             public int estado_estacionamiento;
         }
 
-
+        //Método que inserta valores en la tabla de estacionamiento
         [WebMethod]
         public bool InsertEstacionamiento(string comuna,string direccion, string comentario, int id, int valor, string auto)
         {
@@ -45,11 +45,41 @@ namespace WebServices
 
             conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
             conn.Open();
-            var sql = "insert into estacionamiento (comuna_estacionamiento,direccion_estacionamiento,comentario_estacionamiento,id_usuario,valor_estacionamiento,tipovehiculo_estacionamiento,estado_estacionamiento) values ('"+comuna+"','"+direccion+"','"+comentario+"',"+id+","+valor+",'"+auto+"',0);";
+            var sql = "insert into estacionamiento values ('" + comuna + "','" + direccion + "','" + comentario + "'," + id + ",0," + valor + ",'" + auto + "',0,0);";
             SqlCommand cmd = new SqlCommand(sql,conn);
 
             int i = cmd.ExecuteNonQuery();
             if (i>0)
+                t = true;
+            return t;
+
+        }
+
+        //Lista los estacionamientos de un usuario
+        [WebMethod]
+        public DataSet ListaEstacionamiendoById(int id_usuario)
+        {
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            SqlDataAdapter da = new SqlDataAdapter("select id_estacionamiento,comuna_estacionamiento,direccion_estacionamiento,comentario_estacionamiento,arrendatario,valor_estacionamiento,tipovehiculo_estacionamiento,imagen_estacionamiento,estado_estacionamiento from estacionamiento where id_usuario="+id_usuario, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+
+        //Método que elimina un estacionamiento de un usuario
+        [WebMethod]
+        public bool EliminaEstacionamiento(int id_estacionamiento, int id_usuario)
+        {
+            bool t = false;
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            conn.Open();
+            var sql = "delete from estacionamiento where id_estacionamiento="+id_estacionamiento+" and id_usuario="+id_usuario+"";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            int i = cmd.ExecuteNonQuery();
+            if (i > 0)
                 t = true;
             return t;
 

@@ -143,18 +143,6 @@ namespace Estacionamiento.Controllers
         }
 
 
-        [HttpGet]
-        public HttpResponse lista()
-        {
-            
-            crudUsuarioSoapClient wsU = new crudUsuarioSoapClient();
-
-            
-            var listado = wsU.ListaUsuarios();
-            return listado.ReadXml();
-            // return RedirectToAction("Estacionamiento", "Usuario");
-
-        }
 
         /*
          Inicia y cierra SESSION

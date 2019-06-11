@@ -53,3 +53,4 @@ C:\Users\joser\Desktop\Proyectos VS\AppEstacionamientos\Estacionamiento\WebServi
 C:\Users\joser\Desktop\Proyectos VS\AppEstacionamientos\Estacionamiento\WebServices\obj\Debug\WebServices.csproj.CopyComplete
 C:\Users\joser\Desktop\Proyectos VS\AppEstacionamientos\Estacionamiento\WebServices\obj\Debug\WebServices.dll
 C:\Users\joser\Desktop\Proyectos VS\AppEstacionamientos\Estacionamiento\WebServices\obj\Debug\WebServices.pdb
+C:\Users\joser\Desktop\Proyectos VS\AppEstacionamientos\Estacionamiento\WebServices\obj\Debug\WebServices.csprojAssemblyReference.cache
