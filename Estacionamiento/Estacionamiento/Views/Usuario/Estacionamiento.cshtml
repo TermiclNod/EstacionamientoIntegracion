@@ -148,10 +148,13 @@
                                 <h6 class="text-overflow m-0">Bienvenido!</h6>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <a href="#!" class="dropdown-item">
+                            @using (@Html.BeginForm("logout", "Usuario", FormMethod.Post)){
+                            <div class="dropdown-item">
                                 <i class="ni ni-user-run"></i>
-                                <span>Cerrar Sesión</span>
-                            </a>
+                                <input type="submit" class="btn btn-danger" value="Cerrar Sesión" />
+                            </div>
+
+                            }
                         </div>
                     </li>
                 </ul>
