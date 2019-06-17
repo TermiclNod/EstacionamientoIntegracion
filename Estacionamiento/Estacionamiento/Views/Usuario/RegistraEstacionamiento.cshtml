@@ -63,10 +63,23 @@
                             <h6 class="text-overflow m-0">Bienvenido!</h6>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a href="#!" class="dropdown-item">
+<<<<<<< HEAD
+                        @using (@Html.BeginForm("logout", "Usuario", FormMethod.Post))
+                        {
+                            <div class="dropdown-item">
+                                <i class="ni ni-user-run"></i>
+                                <input type="submit" class="btn btn-danger" value="Cerrar Sesión" />
+                            </div>
+
+=======
+                        @using (@Html.BeginForm("logout", "Usuario", FormMethod.Post)){
+                        <div class="dropdown-item">
                             <i class="ni ni-user-run"></i>
-                            <span>Cerrar Sesión</span>
-                        </a>
+                            <input type="submit" class="btn btn-danger" value="Cerrar Sesión" />
+                        </div>
+                        
+>>>>>>> master
+                        }
                     </div>
                 </li>
             </ul>
@@ -92,22 +105,22 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="#">
                             <i class="ni ni-tv-2 text-primary"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="#">
                             <i class="ni ni-pin-3 text-orange"></i> Mapa
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="#">
                             <i class="ni ni-single-02 text-yellow"></i> Perfil
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="#">
                             <i class="ni ni-bullet-list-67 text-red"></i> Estacionamientos
                         </a>
                     </li>
@@ -149,10 +162,22 @@
                                 <h6 class="text-overflow m-0">Bienvenido!</h6>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <a href="#!" class="dropdown-item">
+<<<<<<< HEAD
+                            @using (@Html.BeginForm("logout", "Usuario", FormMethod.Post))
+                            {
+                                <div class="dropdown-item">
+                                    <i class="ni ni-user-run"></i>
+                                    <input type="submit" class="btn btn-danger" value="Cerrar Sesión" />
+                                </div>
+=======
+                            @using (@Html.BeginForm("logout", "Usuario", FormMethod.Post)){
+                            <div class="dropdown-item">
                                 <i class="ni ni-user-run"></i>
-                                <span>Cerrar Sesión</span>
-                            </a>
+                                <input type="submit" class="btn btn-danger" value="Cerrar Sesión" />
+                            </div>
+>>>>>>> master
+
+                            }
                         </div>
                     </li>
                 </ul>

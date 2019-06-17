@@ -30,6 +30,27 @@ namespace Estacionamiento.ServiceUsuario {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IniciarSesion", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> IniciarSesionAsync(string correo_usuario, string contrasena_usuario);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidaExistencia", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ValidaExistencia(string correo_usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidaExistencia", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ValidaExistenciaAsync(string correo_usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CompruebaArrendador_Duenno", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool CompruebaArrendador_Duenno(int id_usuario, int id_tipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CompruebaArrendador_Duenno", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> CompruebaArrendador_DuennoAsync(int id_usuario, int id_tipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CompruebaArrendador_DuennoWithCorreo", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool CompruebaArrendador_DuennoWithCorreo(string correo, int id_tipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CompruebaArrendador_DuennoWithCorreo", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> CompruebaArrendador_DuennoWithCorreoAsync(string correo, int id_tipo);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CambiaEstado", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         bool CambiaEstado(int id_usuario);
@@ -60,10 +81,10 @@ namespace Estacionamiento.ServiceUsuario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserWithoutTipo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Estacionamiento.ServiceUsuario.User GetUserWithoutTipo(string emailAddress, string pass);
+        Estacionamiento.ServiceUsuario.User GetUserWithoutTipo(string emailAddress);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserWithoutTipo", ReplyAction="*")]
-        System.Threading.Tasks.Task<Estacionamiento.ServiceUsuario.User> GetUserWithoutTipoAsync(string emailAddress, string pass);
+        System.Threading.Tasks.Task<Estacionamiento.ServiceUsuario.User> GetUserWithoutTipoAsync(string emailAddress);
     }
     
     /// <remarks/>
@@ -253,6 +274,30 @@ namespace Estacionamiento.ServiceUsuario {
             return base.Channel.IniciarSesionAsync(correo_usuario, contrasena_usuario);
         }
         
+        public bool ValidaExistencia(string correo_usuario) {
+            return base.Channel.ValidaExistencia(correo_usuario);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidaExistenciaAsync(string correo_usuario) {
+            return base.Channel.ValidaExistenciaAsync(correo_usuario);
+        }
+        
+        public bool CompruebaArrendador_Duenno(int id_usuario, int id_tipo) {
+            return base.Channel.CompruebaArrendador_Duenno(id_usuario, id_tipo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CompruebaArrendador_DuennoAsync(int id_usuario, int id_tipo) {
+            return base.Channel.CompruebaArrendador_DuennoAsync(id_usuario, id_tipo);
+        }
+        
+        public bool CompruebaArrendador_DuennoWithCorreo(string correo, int id_tipo) {
+            return base.Channel.CompruebaArrendador_DuennoWithCorreo(correo, id_tipo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CompruebaArrendador_DuennoWithCorreoAsync(string correo, int id_tipo) {
+            return base.Channel.CompruebaArrendador_DuennoWithCorreoAsync(correo, id_tipo);
+        }
+        
         public bool CambiaEstado(int id_usuario) {
             return base.Channel.CambiaEstado(id_usuario);
         }
@@ -285,12 +330,12 @@ namespace Estacionamiento.ServiceUsuario {
             return base.Channel.GetUserAsync(emailAddress, pass);
         }
         
-        public Estacionamiento.ServiceUsuario.User GetUserWithoutTipo(string emailAddress, string pass) {
-            return base.Channel.GetUserWithoutTipo(emailAddress, pass);
+        public Estacionamiento.ServiceUsuario.User GetUserWithoutTipo(string emailAddress) {
+            return base.Channel.GetUserWithoutTipo(emailAddress);
         }
         
-        public System.Threading.Tasks.Task<Estacionamiento.ServiceUsuario.User> GetUserWithoutTipoAsync(string emailAddress, string pass) {
-            return base.Channel.GetUserWithoutTipoAsync(emailAddress, pass);
+        public System.Threading.Tasks.Task<Estacionamiento.ServiceUsuario.User> GetUserWithoutTipoAsync(string emailAddress) {
+            return base.Channel.GetUserWithoutTipoAsync(emailAddress);
         }
     }
 }

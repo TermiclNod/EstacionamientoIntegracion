@@ -19,7 +19,7 @@ namespace WebServices
     public class crudEstacionamiento : System.Web.Services.WebService
     {
         SqlConnection conn = new SqlConnection();
-
+        
         public struct Estacionamiento
         {
             public int id_estacionamiento;
@@ -67,6 +67,19 @@ namespace WebServices
             return ds;
         }
 
+        //Lista los estacionamientos que se encuentran libres
+        [WebMethod]
+        public DataSet ListaEstacionamientoLibre(int id_usuario)
+        {
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            SqlDataAdapter da = new SqlDataAdapter("select id_estacionamiento,comuna_estacionamiento,direccion_estacionamiento,comentario_estacionamiento,valor_estacionamiento,tipovehiculo_estacionamiento from estacionamiento where estado_estacionamiento=0 and id_usuario <> "+id_usuario, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+
+
         //Método que elimina un estacionamiento de un usuario
         [WebMethod]
         public bool EliminaEstacionamiento(int id_estacionamiento, int id_usuario)
@@ -76,6 +89,42 @@ namespace WebServices
             conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
             conn.Open();
             var sql = "delete from estacionamiento where id_estacionamiento="+id_estacionamiento+" and id_usuario="+id_usuario+"";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            int i = cmd.ExecuteNonQuery();
+            if (i > 0)
+                t = true;
+            return t;
+
+        }
+
+        //Método que actualiza los campos de arrendatario y estado (ocupa el estacionamiento)
+        [WebMethod]
+        public bool ActualizaEstacionamiento(int id_usuario, int id_estacionamiento)
+        {
+            bool t = false;
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            conn.Open();
+            var sql = "update estacionamiento set arrendatario="+id_usuario+ ",estado_estacionamiento=1 where id_estacionamiento="+id_estacionamiento;
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            int i = cmd.ExecuteNonQuery();
+            if (i > 0)
+                t = true;
+            return t;
+
+        }
+
+        //Método que actualiza los campos de arrendatario y estado a 0, para que algún usuario lo pueda usar.
+        [WebMethod]
+        public bool ActualizaEstacionamientoLibre(int id_estacionamiento)
+        {
+            bool t = false;
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            conn.Open();
+            var sql = "update estacionamiento set arrendatario=0,estado_estacionamiento=0 where id_estacionamiento="+id_estacionamiento;
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             int i = cmd.ExecuteNonQuery();

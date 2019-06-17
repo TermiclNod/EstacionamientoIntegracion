@@ -9,106 +9,54 @@
 //------------------------------------------------------------------------------
 
 namespace Estacionamiento.ServiceEstacionamiento {
+    using System.Data;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceEstacionamiento.crudEstacionamientoSoap")]
     public interface crudEstacionamientoSoap {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento comuna del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertEstacionamiento", ReplyAction="*")]
-        Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponse InsertEstacionamiento(Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool InsertEstacionamiento(string comuna, string direccion, string comentario, int id, int valor, string auto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertEstacionamiento", ReplyAction="*")]
-        System.Threading.Tasks.Task<Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponse> InsertEstacionamientoAsync(Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class InsertEstacionamientoRequest {
+        System.Threading.Tasks.Task<bool> InsertEstacionamientoAsync(string comuna, string direccion, string comentario, int id, int valor, string auto);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertEstacionamiento", Namespace="http://tempuri.org/", Order=0)]
-        public Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequestBody Body;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaEstacionamiendoById", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ListaEstacionamiendoById(int id_usuario);
         
-        public InsertEstacionamientoRequest() {
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaEstacionamiendoById", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ListaEstacionamiendoByIdAsync(int id_usuario);
         
-        public InsertEstacionamientoRequest(Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class InsertEstacionamientoRequestBody {
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaEstacionamientoLibre", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ListaEstacionamientoLibre(int id_usuario);
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string comuna;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaEstacionamientoLibre", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ListaEstacionamientoLibreAsync(int id_usuario);
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string direccion;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminaEstacionamiento", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool EliminaEstacionamiento(int id_estacionamiento, int id_usuario);
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string comentario;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminaEstacionamiento", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> EliminaEstacionamientoAsync(int id_estacionamiento, int id_usuario);
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public int id;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizaEstacionamiento", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ActualizaEstacionamiento(int id_usuario, int id_estacionamiento);
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public int valor;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizaEstacionamiento", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ActualizaEstacionamientoAsync(int id_usuario, int id_estacionamiento);
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string auto;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizaEstacionamientoLibre", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ActualizaEstacionamientoLibre(int id_estacionamiento);
         
-        public InsertEstacionamientoRequestBody() {
-        }
-        
-        public InsertEstacionamientoRequestBody(string comuna, string direccion, string comentario, int id, int valor, string auto) {
-            this.comuna = comuna;
-            this.direccion = direccion;
-            this.comentario = comentario;
-            this.id = id;
-            this.valor = valor;
-            this.auto = auto;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class InsertEstacionamientoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertEstacionamientoResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponseBody Body;
-        
-        public InsertEstacionamientoResponse() {
-        }
-        
-        public InsertEstacionamientoResponse(Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class InsertEstacionamientoResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool InsertEstacionamientoResult;
-        
-        public InsertEstacionamientoResponseBody() {
-        }
-        
-        public InsertEstacionamientoResponseBody(bool InsertEstacionamientoResult) {
-            this.InsertEstacionamientoResult = InsertEstacionamientoResult;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizaEstacionamientoLibre", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ActualizaEstacionamientoLibreAsync(int id_estacionamiento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -138,39 +86,52 @@ namespace Estacionamiento.ServiceEstacionamiento {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponse Estacionamiento.ServiceEstacionamiento.crudEstacionamientoSoap.InsertEstacionamiento(Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest request) {
-            return base.Channel.InsertEstacionamiento(request);
-        }
-        
         public bool InsertEstacionamiento(string comuna, string direccion, string comentario, int id, int valor, string auto) {
-            Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest inValue = new Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest();
-            inValue.Body = new Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequestBody();
-            inValue.Body.comuna = comuna;
-            inValue.Body.direccion = direccion;
-            inValue.Body.comentario = comentario;
-            inValue.Body.id = id;
-            inValue.Body.valor = valor;
-            inValue.Body.auto = auto;
-            Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponse retVal = ((Estacionamiento.ServiceEstacionamiento.crudEstacionamientoSoap)(this)).InsertEstacionamiento(inValue);
-            return retVal.Body.InsertEstacionamientoResult;
+            return base.Channel.InsertEstacionamiento(comuna, direccion, comentario, id, valor, auto);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponse> Estacionamiento.ServiceEstacionamiento.crudEstacionamientoSoap.InsertEstacionamientoAsync(Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest request) {
-            return base.Channel.InsertEstacionamientoAsync(request);
+        public System.Threading.Tasks.Task<bool> InsertEstacionamientoAsync(string comuna, string direccion, string comentario, int id, int valor, string auto) {
+            return base.Channel.InsertEstacionamientoAsync(comuna, direccion, comentario, id, valor, auto);
         }
         
-        public System.Threading.Tasks.Task<Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponse> InsertEstacionamientoAsync(string comuna, string direccion, string comentario, int id, int valor, string auto) {
-            Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest inValue = new Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequest();
-            inValue.Body = new Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoRequestBody();
-            inValue.Body.comuna = comuna;
-            inValue.Body.direccion = direccion;
-            inValue.Body.comentario = comentario;
-            inValue.Body.id = id;
-            inValue.Body.valor = valor;
-            inValue.Body.auto = auto;
-            return ((Estacionamiento.ServiceEstacionamiento.crudEstacionamientoSoap)(this)).InsertEstacionamientoAsync(inValue);
+        public System.Data.DataSet ListaEstacionamiendoById(int id_usuario) {
+            return base.Channel.ListaEstacionamiendoById(id_usuario);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ListaEstacionamiendoByIdAsync(int id_usuario) {
+            return base.Channel.ListaEstacionamiendoByIdAsync(id_usuario);
+        }
+        
+        public System.Data.DataSet ListaEstacionamientoLibre(int id_usuario) {
+            return base.Channel.ListaEstacionamientoLibre(id_usuario);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ListaEstacionamientoLibreAsync(int id_usuario) {
+            return base.Channel.ListaEstacionamientoLibreAsync(id_usuario);
+        }
+        
+        public bool EliminaEstacionamiento(int id_estacionamiento, int id_usuario) {
+            return base.Channel.EliminaEstacionamiento(id_estacionamiento, id_usuario);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminaEstacionamientoAsync(int id_estacionamiento, int id_usuario) {
+            return base.Channel.EliminaEstacionamientoAsync(id_estacionamiento, id_usuario);
+        }
+        
+        public bool ActualizaEstacionamiento(int id_usuario, int id_estacionamiento) {
+            return base.Channel.ActualizaEstacionamiento(id_usuario, id_estacionamiento);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizaEstacionamientoAsync(int id_usuario, int id_estacionamiento) {
+            return base.Channel.ActualizaEstacionamientoAsync(id_usuario, id_estacionamiento);
+        }
+        
+        public bool ActualizaEstacionamientoLibre(int id_estacionamiento) {
+            return base.Channel.ActualizaEstacionamientoLibre(id_estacionamiento);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizaEstacionamientoLibreAsync(int id_estacionamiento) {
+            return base.Channel.ActualizaEstacionamientoLibreAsync(id_estacionamiento);
         }
     }
 }

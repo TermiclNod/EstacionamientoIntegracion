@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Estacionamiento.ServiceUsuario;
+using Estacionamiento.ServiceEstacionamiento;
+using Estacionamiento.ServiceInfo;
 
 namespace Estacionamiento.Controllers
 {
@@ -11,7 +14,12 @@ namespace Estacionamiento.Controllers
         // GET: Admin
         public ActionResult DashADM()
         {
-            return View();
+            crudUsuarioSoapClient ws = new crudUsuarioSoapClient();
+
+            var lista = ws.ListaUsuarios();
+
+            return View(lista);
         }
+
     }
 }

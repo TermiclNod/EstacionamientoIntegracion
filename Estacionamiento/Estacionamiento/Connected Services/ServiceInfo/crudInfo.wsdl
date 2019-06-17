@@ -2,34 +2,212 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
+      <s:element name="RegistraResena">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="puntaje" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="comentario" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistraResenaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistraResenaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistraDenuncia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistraDenunciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistraDenunciaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminaResena">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminaResenaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminaResenaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminaDenuncia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminaDenunciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminaDenunciaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaResenas">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListaResenasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaResenasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaDenuncia">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListaDenunciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaDenunciaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
           </s:sequence>
         </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  <wsdl:message name="RegistraResenaSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistraResena" />
   </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  <wsdl:message name="RegistraResenaSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistraResenaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistraDenunciaSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistraDenuncia" />
+  </wsdl:message>
+  <wsdl:message name="RegistraDenunciaSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistraDenunciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminaResenaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminaResena" />
+  </wsdl:message>
+  <wsdl:message name="EliminaResenaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminaResenaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminaDenunciaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminaDenuncia" />
+  </wsdl:message>
+  <wsdl:message name="EliminaDenunciaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminaDenunciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListaResenasSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaResenas" />
+  </wsdl:message>
+  <wsdl:message name="ListaResenasSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaResenasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListaDenunciaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaDenuncia" />
+  </wsdl:message>
+  <wsdl:message name="ListaDenunciaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaDenunciaResponse" />
   </wsdl:message>
   <wsdl:portType name="crudInfoSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
+    <wsdl:operation name="RegistraResena">
+      <wsdl:input message="tns:RegistraResenaSoapIn" />
+      <wsdl:output message="tns:RegistraResenaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraDenuncia">
+      <wsdl:input message="tns:RegistraDenunciaSoapIn" />
+      <wsdl:output message="tns:RegistraDenunciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminaResena">
+      <wsdl:input message="tns:EliminaResenaSoapIn" />
+      <wsdl:output message="tns:EliminaResenaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminaDenuncia">
+      <wsdl:input message="tns:EliminaDenunciaSoapIn" />
+      <wsdl:output message="tns:EliminaDenunciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaResenas">
+      <wsdl:input message="tns:ListaResenasSoapIn" />
+      <wsdl:output message="tns:ListaResenasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaDenuncia">
+      <wsdl:input message="tns:ListaDenunciaSoapIn" />
+      <wsdl:output message="tns:ListaDenunciaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="crudInfoSoap" type="tns:crudInfoSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="RegistraResena">
+      <soap:operation soapAction="http://tempuri.org/RegistraResena" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraDenuncia">
+      <soap:operation soapAction="http://tempuri.org/RegistraDenuncia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaResena">
+      <soap:operation soapAction="http://tempuri.org/EliminaResena" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaDenuncia">
+      <soap:operation soapAction="http://tempuri.org/EliminaDenuncia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaResenas">
+      <soap:operation soapAction="http://tempuri.org/ListaResenas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDenuncia">
+      <soap:operation soapAction="http://tempuri.org/ListaDenuncia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -40,8 +218,53 @@
   </wsdl:binding>
   <wsdl:binding name="crudInfoSoap12" type="tns:crudInfoSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+    <wsdl:operation name="RegistraResena">
+      <soap12:operation soapAction="http://tempuri.org/RegistraResena" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraDenuncia">
+      <soap12:operation soapAction="http://tempuri.org/RegistraDenuncia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaResena">
+      <soap12:operation soapAction="http://tempuri.org/EliminaResena" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaDenuncia">
+      <soap12:operation soapAction="http://tempuri.org/EliminaDenuncia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaResenas">
+      <soap12:operation soapAction="http://tempuri.org/ListaResenas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDenuncia">
+      <soap12:operation soapAction="http://tempuri.org/ListaDenuncia" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

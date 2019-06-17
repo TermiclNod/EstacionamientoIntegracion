@@ -19,8 +19,8 @@ CREATE TABLE estacionamiento (
     id_usuario             int NOT NULL,
 	arrendatario int,
     valor_estacionamiento          int NOT NULL,
-    tipovehiculo_estacionamiento   varchar NOT NULL,
-    imagen_estacionamiento         varchar,
+    tipovehiculo_estacionamiento   varchar(200) NOT NULL,
+    imagen_estacionamiento         varchar(500),
     estado_estacionamiento         CHAR(1) NOT NULL
 );
 
@@ -103,9 +103,25 @@ insert into tipo values(2,'Dueño');
 insert into tipo values(3,'Arrendador');
 --tipo_usuario
 insert into usuario_tipo values(3,1);
+insert into usuario_tipo values(2,1);
 insert into usuario_tipo values(2,2);
 
+select * from usuario_tipo order by id_usuario;
 
-select u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.rut_usuario,u.contrasena_usuario,u.estado_usuario,u.correo_usuario,u.imagen_usuario,ut.id_tipo
-from usuario u inner join usuario_tipo ut on u.id_usuario=ut.id_usuario
-where correo_usuario=@email and contrasena_usuario=@pass
+delete from estacionamiento
+insert into estacionamiento (comuna_estacionamiento,direccion_estacionamiento,comentario_estacionamiento,id_usuario,valor_estacionamiento,tipovehiculo_estacionamiento,estado_estacionamiento) values ('Puente Alto','porahí 123','Recinto piola',2,950,'Sedan',1);
+
+select u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.rut_usuario,u.contrasena_usuario,u.estado_usuario,u.correo_usuario
+from usuario u 
+
+
+select u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.rut_usuario,u.contrasena_usuario,u.estado_usuario,u.correo_usuario,ut.id_tipo
+from usuario u inner join usuario_tipo ut on u.id_usuario=ut.id_usuario order by u.id_usuario
+
+delete from usuario_tipo where id_usuario = 2 and id_tipo=2
+
+
+select id_estacionamiento,comuna_estacionamiento,direccion_estacionamiento,comentario_estacionamiento,id_usuario, arrendatario,valor_estacionamiento,tipovehiculo_estacionamiento,imagen_estacionamiento,estado_estacionamiento from estacionamiento where id_usuario=2
+
+select u.id_usuario from usuario u inner join usuario_tipo ut on u.id_usuario=ut.id_usuario where u.id_usuario=15 and ut.id_tipo=3
+select u.id_usuario from usuario u inner join usuario_tipo ut on u.id_usuario=ut.id_usuario where u.correo_usuario='elsoly@gmail.com' and ut.id_tipo=2

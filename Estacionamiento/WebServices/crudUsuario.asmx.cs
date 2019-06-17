@@ -38,7 +38,7 @@ namespace WebServices
         {
             
             conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
-            SqlDataAdapter da = new SqlDataAdapter("select id_usuario from usuario",conn);
+            SqlDataAdapter da = new SqlDataAdapter("select id_usuario id_usuario, nombre_usuario+' '+apellido_usuario nombre, rut_usuario rut, contrasena_usuario pass, estado_usuario estado, correo_usuario correo from usuario", conn);
             DataSet ds = new DataSet();
             da.MissingSchemaAction = MissingSchemaAction.AddWithKey;
             da.Fill(ds);
@@ -54,7 +54,7 @@ namespace WebServices
             conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
             conn.Open();
 
-            var sql = ("select * from usuario where correo_usuario = '"+correo_usuario+"' and contrasena_usuario='"+contrasena_usuario+"';");
+            var sql = ("select id_usuario from usuario where correo_usuario = '"+correo_usuario+"' and contrasena_usuario='"+contrasena_usuario+"';");
 
             SqlDataAdapter da = new SqlDataAdapter(sql,conn);
             DataSet ds = new DataSet();
@@ -66,6 +66,75 @@ namespace WebServices
                 t = true;
             return t;
         }
+
+
+        //Método que valida la existencia de alguna cuenta creada previamente
+        [WebMethod]
+        public bool ValidaExistencia(string correo_usuario)
+        {
+            bool t = false;
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            conn.Open();
+
+            var sql = ("select id_usuario from usuario where correo_usuario = '" + correo_usuario + "';");
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+
+
+            int i = da.Fill(ds);
+
+            if (i > 0)
+                t = true;
+            return t;
+        }
+
+
+        //Método que valida si el usuario es arrendador y/o Dueño
+        [WebMethod]
+        public bool CompruebaArrendador_Duenno(int id_usuario,int id_tipo)
+        {
+            bool t = false;
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            conn.Open();
+
+            var sql = ("select u.id_usuario from usuario u inner join usuario_tipo ut on u.id_usuario=ut.id_usuario where u.id_usuario="+id_usuario+" and ut.id_tipo="+id_tipo);
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+
+
+            int i = da.Fill(ds);
+
+            if (i > 0)
+                t = true;
+            return t;
+        }
+
+        //Método que valida si el usuario ya posee una cuenta de algún tipo
+        [WebMethod]
+        public bool CompruebaArrendador_DuennoWithCorreo(string correo, int id_tipo)
+        {
+            bool t = false;
+
+            conn.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
+            conn.Open();
+
+            var sql = ("select u.id_usuario from usuario u inner join usuario_tipo ut on u.id_usuario=ut.id_usuario where u.correo_usuario='" + correo + "' and ut.id_tipo=" + id_tipo);
+
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+
+
+            int i = da.Fill(ds);
+
+            if (i > 0)
+                t = true;
+            return t;
+        }
+
 
         //Método que cambia el estado, para que así el administrador lo inhabilite.
         [WebMethod]
@@ -175,7 +244,7 @@ namespace WebServices
 
         //Lo mismo de arriba, pero sin id_tipo
         [WebMethod]
-        public User GetUserWithoutTipo(string emailAddress, string pass)
+        public User GetUserWithoutTipo(string emailAddress)
         {
             int id = 0;
             string nombre = string.Empty;
@@ -191,11 +260,11 @@ namespace WebServices
                 con.ConnectionString = "data source=TERMICL-ROG\\SQLEXPRESS;initial catalog=appEstacionamiento; Integrated Security = True";
                 con.Open();
 
-                var sql = "select u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.rut_usuario,u.contrasena_usuario,u.estado_usuario,u.correo_usuario,u.imagen_usuario from usuario u where u.correo_usuario = @email and u.contrasena_usuario = @pass";
+                var sql = "select u.id_usuario,u.nombre_usuario,u.apellido_usuario,u.rut_usuario,u.contrasena_usuario,u.estado_usuario,u.correo_usuario,u.imagen_usuario from usuario u where u.correo_usuario = @email";
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 cmd.Parameters.Add(new SqlParameter("@email", emailAddress));
-                cmd.Parameters.Add(new SqlParameter("@pass", pass));
+                //cmd.Parameters.Add(new SqlParameter("@pass", pass));
                 var sqlReader = cmd.ExecuteReader();
                 while (sqlReader.Read())
                 {
