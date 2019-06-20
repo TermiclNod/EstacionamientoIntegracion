@@ -218,7 +218,6 @@ namespace Estacionamiento.Controllers
          
         }
 
-<<<<<<< HEAD
         [HttpPost]
         public ActionResult OcupaEstacionamiento()
         {
@@ -226,21 +225,6 @@ namespace Estacionamiento.Controllers
             int usuario = int.Parse(Session["id_usuario"].ToString());
 
             crudEstacionamientoSoapClient wsE = new crudEstacionamientoSoapClient();
-=======
-                //Método para cerrar la sesión de un usuario.
-        [HttpPost]
-        public ActionResult logout()
-        {
-            if (Session["id_usuario"] != null)
-            {
-                Session.Remove("id_usuario");
-                Session.Remove("Nombre");
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
->>>>>>> master
 
             wsE.ActualizaEstacionamiento(usuario,idEsta);
 
