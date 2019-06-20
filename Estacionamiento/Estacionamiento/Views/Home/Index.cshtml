@@ -117,7 +117,10 @@
                                 </div>
                                 <div class="text-center">
                                     <input type="submit" class="btn btn-primary my-4" value="Iniciar Sesión" />
-
+                                    @if (Session["Mensaje"] !=null)
+                                    {
+                                    <div class="alert-neutral">@Session["Mensaje"]</div>
+                                    }
                                 </div>
                             }
                             

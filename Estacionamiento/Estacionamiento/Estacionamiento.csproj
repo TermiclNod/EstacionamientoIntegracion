@@ -104,6 +104,7 @@
     <Content Include="assets\css\argon.css" />
     <Content Include="assets\css\argon.min.css" />
     <Content Include="assets\css\dataTables.bootstrap.min.css" />
+    <Content Include="assets\css\jquery.dataTables.css" />
     <Content Include="assets\fonts\nucleo\nucleo-icons.svg" />
     <Content Include="assets\img\brand\blue.png" />
     <Content Include="assets\img\brand\favicon.png" />
@@ -123,6 +124,7 @@
     <Content Include="assets\js\argon.js" />
     <Content Include="assets\js\argon.min.js" />
     <Content Include="assets\js\dataTables.bootstrap.min.js" />
+    <Content Include="assets\js\jquery.dataTables.js" />
     <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\vendor\fortawesome\fontawesome-free\css\all.min.css" />
     <Content Include="assets\vendor\fortawesome\fontawesome-free\css\brands.min.css" />
@@ -1802,13 +1804,7 @@
     <Content Include="assets\vendor\prismjs\themes\prism-twilight.css" />
     <Content Include="assets\vendor\prismjs\themes\prism.css" />
     <None Include="Connected Services\ServiceEstacionamiento\crudEstacionamiento.wsdl" />
-    <Content Include="Connected Services\ServiceEstacionamiento\Estacionamiento.ServiceEstacionamiento.InsertEstacionamientoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\ServiceInfo\crudInfo.wsdl" />
-    <Content Include="Connected Services\ServiceInfo\Estacionamiento.ServiceInfo.HelloWorldResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\ServiceUsuario\crudUsuario.disco" />
     <None Include="Connected Services\ServiceUsuario\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceUsuario\configuration.svcinfo" />
@@ -2088,6 +2084,8 @@
     <Content Include="Views\Usuario\Estacionamiento.cshtml" />
     <Content Include="Views\Home\RegistroTipo.cshtml" />
     <Content Include="Views\Usuario\RegistraEstacionamiento.cshtml" />
+    <Content Include="Views\Usuario\DashUser.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

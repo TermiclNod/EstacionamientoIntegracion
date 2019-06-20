@@ -21,6 +21,92 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ListaEstacionamiendoById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaEstacionamiendoByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaEstacionamiendoByIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaEstacionamientoLibre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaEstacionamientoLibreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaEstacionamientoLibreResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminaEstacionamiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_estacionamiento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminaEstacionamientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminaEstacionamientoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizaEstacionamiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_usuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_estacionamiento" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizaEstacionamientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizaEstacionamientoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizaEstacionamientoLibre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_estacionamiento" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizaEstacionamientoLibreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizaEstacionamientoLibreResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InsertEstacionamientoSoapIn">
@@ -29,10 +115,60 @@
   <wsdl:message name="InsertEstacionamientoSoapOut">
     <wsdl:part name="parameters" element="tns:InsertEstacionamientoResponse" />
   </wsdl:message>
+  <wsdl:message name="ListaEstacionamiendoByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaEstacionamiendoById" />
+  </wsdl:message>
+  <wsdl:message name="ListaEstacionamiendoByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaEstacionamiendoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListaEstacionamientoLibreSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaEstacionamientoLibre" />
+  </wsdl:message>
+  <wsdl:message name="ListaEstacionamientoLibreSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaEstacionamientoLibreResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminaEstacionamientoSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminaEstacionamiento" />
+  </wsdl:message>
+  <wsdl:message name="EliminaEstacionamientoSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminaEstacionamientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaEstacionamientoSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizaEstacionamiento" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaEstacionamientoSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizaEstacionamientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaEstacionamientoLibreSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizaEstacionamientoLibre" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaEstacionamientoLibreSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizaEstacionamientoLibreResponse" />
+  </wsdl:message>
   <wsdl:portType name="crudEstacionamientoSoap">
     <wsdl:operation name="InsertEstacionamiento">
       <wsdl:input message="tns:InsertEstacionamientoSoapIn" />
       <wsdl:output message="tns:InsertEstacionamientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaEstacionamiendoById">
+      <wsdl:input message="tns:ListaEstacionamiendoByIdSoapIn" />
+      <wsdl:output message="tns:ListaEstacionamiendoByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaEstacionamientoLibre">
+      <wsdl:input message="tns:ListaEstacionamientoLibreSoapIn" />
+      <wsdl:output message="tns:ListaEstacionamientoLibreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminaEstacionamiento">
+      <wsdl:input message="tns:EliminaEstacionamientoSoapIn" />
+      <wsdl:output message="tns:EliminaEstacionamientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstacionamiento">
+      <wsdl:input message="tns:ActualizaEstacionamientoSoapIn" />
+      <wsdl:output message="tns:ActualizaEstacionamientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstacionamientoLibre">
+      <wsdl:input message="tns:ActualizaEstacionamientoLibreSoapIn" />
+      <wsdl:output message="tns:ActualizaEstacionamientoLibreSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="crudEstacionamientoSoap" type="tns:crudEstacionamientoSoap">
@@ -46,11 +182,101 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ListaEstacionamiendoById">
+      <soap:operation soapAction="http://tempuri.org/ListaEstacionamiendoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaEstacionamientoLibre">
+      <soap:operation soapAction="http://tempuri.org/ListaEstacionamientoLibre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaEstacionamiento">
+      <soap:operation soapAction="http://tempuri.org/EliminaEstacionamiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstacionamiento">
+      <soap:operation soapAction="http://tempuri.org/ActualizaEstacionamiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstacionamientoLibre">
+      <soap:operation soapAction="http://tempuri.org/ActualizaEstacionamientoLibre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="crudEstacionamientoSoap12" type="tns:crudEstacionamientoSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="InsertEstacionamiento">
       <soap12:operation soapAction="http://tempuri.org/InsertEstacionamiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaEstacionamiendoById">
+      <soap12:operation soapAction="http://tempuri.org/ListaEstacionamiendoById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaEstacionamientoLibre">
+      <soap12:operation soapAction="http://tempuri.org/ListaEstacionamientoLibre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaEstacionamiento">
+      <soap12:operation soapAction="http://tempuri.org/EliminaEstacionamiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstacionamiento">
+      <soap12:operation soapAction="http://tempuri.org/ActualizaEstacionamiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaEstacionamientoLibre">
+      <soap12:operation soapAction="http://tempuri.org/ActualizaEstacionamientoLibre" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

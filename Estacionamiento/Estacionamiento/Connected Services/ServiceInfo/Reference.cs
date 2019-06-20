@@ -9,79 +9,54 @@
 //------------------------------------------------------------------------------
 
 namespace Estacionamiento.ServiceInfo {
+    using System.Data;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceInfo.crudInfoSoap")]
     public interface crudInfoSoap {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento HelloWorldResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        Estacionamiento.ServiceInfo.HelloWorldResponse HelloWorld(Estacionamiento.ServiceInfo.HelloWorldRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistraResena", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool RegistraResena(int puntaje, string comentario, int id_usuario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<Estacionamiento.ServiceInfo.HelloWorldResponse> HelloWorldAsync(Estacionamiento.ServiceInfo.HelloWorldRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistraResena", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> RegistraResenaAsync(int puntaje, string comentario, int id_usuario);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
-        public Estacionamiento.ServiceInfo.HelloWorldRequestBody Body;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistraDenuncia", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool RegistraDenuncia(string descripcion, int id_usuario);
         
-        public HelloWorldRequest() {
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistraDenuncia", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> RegistraDenunciaAsync(string descripcion, int id_usuario);
         
-        public HelloWorldRequest(Estacionamiento.ServiceInfo.HelloWorldRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldRequestBody {
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminaResena", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool EliminaResena(int id);
         
-        public HelloWorldRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminaResena", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> EliminaResenaAsync(int id);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Estacionamiento.ServiceInfo.HelloWorldResponseBody Body;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminaDenuncia", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool EliminaDenuncia(int id);
         
-        public HelloWorldResponse() {
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminaDenuncia", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> EliminaDenunciaAsync(int id);
         
-        public HelloWorldResponse(Estacionamiento.ServiceInfo.HelloWorldResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldResponseBody {
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaResenas", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ListaResenas();
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaResenas", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ListaResenasAsync();
         
-        public HelloWorldResponseBody() {
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaDenuncia", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ListaDenuncia();
         
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListaDenuncia", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ListaDenunciaAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,27 +86,52 @@ namespace Estacionamiento.ServiceInfo {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Estacionamiento.ServiceInfo.HelloWorldResponse Estacionamiento.ServiceInfo.crudInfoSoap.HelloWorld(Estacionamiento.ServiceInfo.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
+        public bool RegistraResena(int puntaje, string comentario, int id_usuario) {
+            return base.Channel.RegistraResena(puntaje, comentario, id_usuario);
         }
         
-        public string HelloWorld() {
-            Estacionamiento.ServiceInfo.HelloWorldRequest inValue = new Estacionamiento.ServiceInfo.HelloWorldRequest();
-            inValue.Body = new Estacionamiento.ServiceInfo.HelloWorldRequestBody();
-            Estacionamiento.ServiceInfo.HelloWorldResponse retVal = ((Estacionamiento.ServiceInfo.crudInfoSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
+        public System.Threading.Tasks.Task<bool> RegistraResenaAsync(int puntaje, string comentario, int id_usuario) {
+            return base.Channel.RegistraResenaAsync(puntaje, comentario, id_usuario);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Estacionamiento.ServiceInfo.HelloWorldResponse> Estacionamiento.ServiceInfo.crudInfoSoap.HelloWorldAsync(Estacionamiento.ServiceInfo.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
+        public bool RegistraDenuncia(string descripcion, int id_usuario) {
+            return base.Channel.RegistraDenuncia(descripcion, id_usuario);
         }
         
-        public System.Threading.Tasks.Task<Estacionamiento.ServiceInfo.HelloWorldResponse> HelloWorldAsync() {
-            Estacionamiento.ServiceInfo.HelloWorldRequest inValue = new Estacionamiento.ServiceInfo.HelloWorldRequest();
-            inValue.Body = new Estacionamiento.ServiceInfo.HelloWorldRequestBody();
-            return ((Estacionamiento.ServiceInfo.crudInfoSoap)(this)).HelloWorldAsync(inValue);
+        public System.Threading.Tasks.Task<bool> RegistraDenunciaAsync(string descripcion, int id_usuario) {
+            return base.Channel.RegistraDenunciaAsync(descripcion, id_usuario);
+        }
+        
+        public bool EliminaResena(int id) {
+            return base.Channel.EliminaResena(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminaResenaAsync(int id) {
+            return base.Channel.EliminaResenaAsync(id);
+        }
+        
+        public bool EliminaDenuncia(int id) {
+            return base.Channel.EliminaDenuncia(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminaDenunciaAsync(int id) {
+            return base.Channel.EliminaDenunciaAsync(id);
+        }
+        
+        public System.Data.DataSet ListaResenas() {
+            return base.Channel.ListaResenas();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ListaResenasAsync() {
+            return base.Channel.ListaResenasAsync();
+        }
+        
+        public System.Data.DataSet ListaDenuncia() {
+            return base.Channel.ListaDenuncia();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ListaDenunciaAsync() {
+            return base.Channel.ListaDenunciaAsync();
         }
     }
 }
